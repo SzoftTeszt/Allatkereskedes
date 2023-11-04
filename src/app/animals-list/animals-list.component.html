@@ -1,0 +1,54 @@
+<!-- <div>{{oszlopok|json}}</div> -->
+<!-- {{allatok|json}} -->
+<div class="container">
+
+    <div class="row my-4 fw-bold">
+        <div *ngFor="let oszlop of oszlopok" class="col">
+            {{oszlop.text}}
+        </div>
+        <div class="col">
+            Műveletek
+        </div>
+    </div>
+
+    <div *ngFor="let allat of allatok" class="row my-2">
+
+       
+
+        <div *ngFor="let oszlop of oszlopok" class="col">
+            <ng-container [ngSwitch]="oszlop.type">
+                <select *ngSwitchCase="'select'"
+                [ngModel]="allat[oszlop.key]"
+                class="form-control"
+                >    <option *ngFor="let faj of oszlop.options"
+                    [value]="faj['id']">{{faj['megnevezes']}}
+                    </option>              
+                </select>
+                <!-- <div *ngFor="let faj of oszlop.options"> 
+                    {{faj|json}}
+                    {{faj['id']}}
+                </div> -->
+                <span *ngSwitchCase="'plain'">
+                    {{allat[oszlop.key]}}
+                </span>
+
+                <input *ngSwitchDefault="" 
+                [ngModel]="allat[oszlop.key]" 
+                [type]="oszlop.type" 
+                class="form-control">
+
+            </ng-container>
+            
+            
+            <!-- {{allat[oszlop.key]}} -->
+           
+        </div>
+
+        <div class="col my-2">
+            Műveletek
+        </div>
+    </div>
+
+
+
+</div>
