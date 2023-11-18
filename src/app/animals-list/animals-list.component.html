@@ -31,9 +31,9 @@
             <ng-container [ngSwitch]="oszlop.type">
                 <select *ngSwitchCase="'select'"
                 [(ngModel)]="ujAllat[oszlop.key]"
-                class="form-control"
-                >    <option *ngFor="let faj of oszlop.options"
-                    [value]="faj['id']">{{faj['megnevezes']}}
+                class="form-control">    
+                    <option *ngFor="let faj of oszlop.options; let i=index" [value]="i">
+                        {{faj}}
                     </option>              
                 </select>
                 <!-- <div *ngFor="let faj of oszlop.options"> 
@@ -67,9 +67,9 @@
             <ng-container [ngSwitch]="oszlop.type">
                 <select *ngSwitchCase="'select'"
                 [(ngModel)]="allat[oszlop.key]"
-                class="form-control"
-                >    <option *ngFor="let faj of oszlop.options"
-                    [value]="faj['id']">{{faj['megnevezes']}}
+                class="form-control">    
+                    <option *ngFor="let faj of oszlop.options; let i=index" [value]="i">
+                        {{faj}}
                     </option>              
                 </select>
                 <!-- <div *ngFor="let faj of oszlop.options"> 

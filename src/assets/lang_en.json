@@ -1,0 +1,25 @@
+{
+    "oszlopok":[
+  {"key":"id", "text":"Id", "type":"plain"},
+  {"key":"nev", "text":"Name", "type":"text"},
+  {"key":"faj", "text":"Race", "type":"select",
+   "options":["snake","cat","hamster","bunny"]},
+  {"key":"ar", "text":"Price", "type":"number"}
+],
+
+"nav":{
+"menu":[
+  {"text":"Home", "link":"home", "comp":"HomeComponent"},
+  {"text":"Animals", "link":"animals", "comp":"AnimalsListComponent"},
+  {"text":"Log In", "link":"login", "comp":"LogInComponent"}
+],
+
+"nyelv":[
+  {"text":"Magyar", "sign":"hu"},
+  {"text":"English", "sign":"en"}
+],
+
+"kereses":"Search"
+
+}
+}

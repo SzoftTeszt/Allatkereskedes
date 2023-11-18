@@ -1,0 +1,24 @@
+{
+      "oszlopok":[
+    {"key":"id", "text":"Id", "type":"plain"},
+    {"key":"nev", "text":"Név", "type":"text"},
+    {"key":"faj", "text":"Faj", "type":"select",
+     "options":["kígyó","macska","hörcsög","nyuszi"]},
+    {"key":"ar", "text":"Ár", "type":"number"}
+  ],
+"nav":{
+  "menu":[
+    {"text":"Bemutatkozás", "link":"home", "comp":"HomeComponent"},
+    {"text":"Állatok", "link":"animals", "comp":"AnimalsListComponent"},
+    {"text":"Bejelentkezés", "link":"login", "comp":"LogInComponent"}
+  ],
+
+  "nyelv":[
+    {"text":"Magyar", "sign":"hu"},
+    {"text":"English", "sign":"en"}
+  ],
+
+  "kereses":"Keresés"
+}
+
+}
