@@ -8,8 +8,10 @@ import { BaseService } from '../base.service';
 })
 export class AnimalsListComponent {
 
+  ujAllat:any={}
   allatok:any
   fajok:any
+  keresendo:any
   oszlopok=[
     {key:"id", text:"Id", type:"plain"},
     {key:"nev", text:"Név", type:"text"},
@@ -29,5 +31,18 @@ export class AnimalsListComponent {
       }
     )
    
+  }
+
+  save(allat:any){
+    console.log("allat1", allat)
+    this.base.updateAnimal(allat)
+  }
+
+  del(allat:any){
+    this.base.deleteAnimal(allat)
+  }
+  add(){
+    this.base.addAnimal(this.ujAllat)
+    this.ujAllat={}
   }
 }

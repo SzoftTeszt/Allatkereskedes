@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AnimalsListComponent } from './animals-list/animals-list.component';
+import { SearchPipe } from './search.pipe';
+import { SortPipe } from './sort.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AnimalsListComponent
+    AnimalsListComponent,
+    SearchPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,

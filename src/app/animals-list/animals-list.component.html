@@ -1,6 +1,15 @@
 <!-- <div>{{oszlopok|json}}</div> -->
 <!-- {{allatok|json}} -->
 <div class="container">
+    <div class="row">
+        <div class="col-4">
+            Keresés:
+            <input 
+                [(ngModel)]="keresendo" 
+                type="text" 
+                class="form-control">
+        </div>
+    </div>
 
     <div class="row my-4 fw-bold">
         <div *ngFor="let oszlop of oszlopok" class="col">
@@ -11,14 +20,47 @@
         </div>
     </div>
 
-    <div *ngFor="let allat of allatok" class="row my-2">
-
-       
-
+    <div class="row my-2">      
         <div *ngFor="let oszlop of oszlopok" class="col">
             <ng-container [ngSwitch]="oszlop.type">
                 <select *ngSwitchCase="'select'"
-                [ngModel]="allat[oszlop.key]"
+                [(ngModel)]="ujAllat[oszlop.key]"
+                class="form-control"
+                >    <option *ngFor="let faj of oszlop.options"
+                    [value]="faj['id']">{{faj['megnevezes']}}
+                    </option>              
+                </select>
+                <!-- <div *ngFor="let faj of oszlop.options"> 
+                    {{faj|json}}
+                    {{faj['id']}}
+                </div> -->
+                <span *ngSwitchCase="'plain'">
+                    {{ujAllat[oszlop.key]}}
+                </span>
+
+                <input *ngSwitchDefault="" 
+                [(ngModel)]="ujAllat[oszlop.key]" 
+                [type]="oszlop.type" 
+                class="form-control">
+
+            </ng-container>
+            
+            
+            <!-- {{allat[oszlop.key]}} -->
+           
+        </div>
+
+        <div class="col my-2">
+            <button (click)="add()" type="button" class="btn btn-primary btn-sm">Hozzáadás</button>
+        </div>
+    </div>
+
+
+    <div *ngFor="let allat of allatok|search:keresendo" class="row my-2">      
+        <div *ngFor="let oszlop of oszlopok" class="col">
+            <ng-container [ngSwitch]="oszlop.type">
+                <select *ngSwitchCase="'select'"
+                [(ngModel)]="allat[oszlop.key]"
                 class="form-control"
                 >    <option *ngFor="let faj of oszlop.options"
                     [value]="faj['id']">{{faj['megnevezes']}}
@@ -33,7 +75,7 @@
                 </span>
 
                 <input *ngSwitchDefault="" 
-                [ngModel]="allat[oszlop.key]" 
+                [(ngModel)]="allat[oszlop.key]" 
                 [type]="oszlop.type" 
                 class="form-control">
 
@@ -45,10 +87,8 @@
         </div>
 
         <div class="col my-2">
-            Műveletek
+            <button (click)="save(allat)" type="button" class="btn btn-primary btn-sm">Mentés</button>
+            <button (click)="del(allat)" type="button" class="btn btn-secondary btn-sm ms-2">Törlés</button>
         </div>
     </div>
-
-
-
 </div>
