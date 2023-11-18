@@ -1,5 +1,5 @@
 <!-- <div>{{oszlopok|json}}</div> -->
-<!-- {{allatok|json}} -->
+{{allatok|json}} 
 <div class="container">
     <div class="row">
         <div class="col-4">
@@ -12,9 +12,15 @@
     </div>
 
     <div class="row my-4 fw-bold">
-        <div *ngFor="let oszlop of oszlopok" class="col">
+        <div (click)="rendez(oszlop)" *ngFor="let oszlop of oszlopok" class="col">
             {{oszlop.text}}
-        </div>
+
+            <ng-container *ngIf="oszlop==rendezOszlop">
+                <i *ngIf="rendezIrany==3" class="bi bi-arrow-down"></i>
+                <i *ngIf="rendezIrany==2" class="bi bi-arrow-up"></i>
+            </ng-container>
+
+            </div>
         <div class="col">
             Műveletek
         </div>
@@ -54,9 +60,9 @@
             <button (click)="add()" type="button" class="btn btn-primary btn-sm">Hozzáadás</button>
         </div>
     </div>
+    <!-- |sort:rendezOszlop:rendezIrany -->
 
-
-    <div *ngFor="let allat of allatok|search:keresendo" class="row my-2">      
+    <div *ngFor="let allat of (allatok|search:keresendo)|sort:rendezOszlop:rendezIrany" class="row my-2">      
         <div *ngFor="let oszlop of oszlopok" class="col">
             <ng-container [ngSwitch]="oszlop.type">
                 <select *ngSwitchCase="'select'"

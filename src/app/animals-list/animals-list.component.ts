@@ -7,6 +7,8 @@ import { BaseService } from '../base.service';
   styleUrls: ['./animals-list.component.css']
 })
 export class AnimalsListComponent {
+  rendezOszlop:any
+  rendezIrany:any=1
 
   ujAllat:any={}
   allatok:any
@@ -34,7 +36,8 @@ export class AnimalsListComponent {
   }
 
   save(allat:any){
-    console.log("allat1", allat)
+    // console.log("allat1", allat)
+    allat.ar=Number(allat.ar)
     this.base.updateAnimal(allat)
   }
 
@@ -42,7 +45,23 @@ export class AnimalsListComponent {
     this.base.deleteAnimal(allat)
   }
   add(){
-    this.base.addAnimal(this.ujAllat)
+    this.ujAllat.ar=Number(this.ujAllat.ar)
+    this.base.addAnimal(this.ujAllat)    
     this.ujAllat={}
   }
+
+  rendez(oszlop:any){
+    this.rendezOszlop=oszlop
+    this.rendezIrany++;    
+   
+    if (this.rendezIrany==4)
+    { 
+      this.rendezIrany=1
+      this.rendezOszlop=this.oszlopok[0]
+    }    
+
+    console.log("Irany",this.rendezIrany)
+    console.log("oszlop",this.rendezOszlop)
+  }
+
 }
